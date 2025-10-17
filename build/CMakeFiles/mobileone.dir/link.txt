@@ -1,0 +1,1 @@
+/usr/bin/cc -nodefaultlibs -flto CMakeFiles/mobileone.dir/src/main.c.o -o mobileone  -lc 
