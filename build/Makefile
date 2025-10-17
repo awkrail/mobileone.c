@@ -129,6 +129,30 @@ mobileone/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mobileone.dir/build.make CMakeFiles/mobileone.dir/build
 .PHONY : mobileone/fast
 
+src/conv2d.o: src/conv2d.c.o
+.PHONY : src/conv2d.o
+
+# target to build an object file
+src/conv2d.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mobileone.dir/build.make CMakeFiles/mobileone.dir/src/conv2d.c.o
+.PHONY : src/conv2d.c.o
+
+src/conv2d.i: src/conv2d.c.i
+.PHONY : src/conv2d.i
+
+# target to preprocess a source file
+src/conv2d.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mobileone.dir/build.make CMakeFiles/mobileone.dir/src/conv2d.c.i
+.PHONY : src/conv2d.c.i
+
+src/conv2d.s: src/conv2d.c.s
+.PHONY : src/conv2d.s
+
+# target to generate assembly for a file
+src/conv2d.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mobileone.dir/build.make CMakeFiles/mobileone.dir/src/conv2d.c.s
+.PHONY : src/conv2d.c.s
+
 src/image.o: src/image.c.o
 .PHONY : src/image.o
 
@@ -210,6 +234,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... mobileone"
+	@echo "... src/conv2d.o"
+	@echo "... src/conv2d.i"
+	@echo "... src/conv2d.s"
 	@echo "... src/image.o"
 	@echo "... src/image.i"
 	@echo "... src/image.s"

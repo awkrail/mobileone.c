@@ -5,8 +5,8 @@
 
 struct Conv2D
 {
-    int in_channels;
-    int out_channels;
+    int in_channel;
+    int out_channel;
     int kernel_size;
     int stride;
     int padding;
@@ -14,6 +14,7 @@ struct Conv2D
     float * bias;
 };
 
-struct Mat forward_conv2d(const char * weight_file, const char * bias_file, struct Mat * input);
+int forward_conv2d(const char * weight_file, const char * bias_file, int in_channel, int out_channel,
+                   int kernel, int stride, int padding, struct Mat * input, struct Mat * output);
 
 #endif

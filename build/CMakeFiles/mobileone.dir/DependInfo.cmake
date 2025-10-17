@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/awkrail/research/mobileone.c/src/conv2d.c" "CMakeFiles/mobileone.dir/src/conv2d.c.o" "gcc" "CMakeFiles/mobileone.dir/src/conv2d.c.o.d"
   "/home/awkrail/research/mobileone.c/src/image.c" "CMakeFiles/mobileone.dir/src/image.c.o" "gcc" "CMakeFiles/mobileone.dir/src/image.c.o.d"
   "/home/awkrail/research/mobileone.c/src/load.c" "CMakeFiles/mobileone.dir/src/load.c.o" "gcc" "CMakeFiles/mobileone.dir/src/load.c.o.d"
   "/home/awkrail/research/mobileone.c/src/main.c" "CMakeFiles/mobileone.dir/src/main.c.o" "gcc" "CMakeFiles/mobileone.dir/src/main.c.o.d"

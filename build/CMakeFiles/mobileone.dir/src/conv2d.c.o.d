@@ -1,6 +1,6 @@
-CMakeFiles/mobileone.dir/src/main.c.o: \
- /home/awkrail/research/mobileone.c/src/main.c /usr/include/stdc-predef.h \
- /usr/include/stdio.h \
+CMakeFiles/mobileone.dir/src/conv2d.c.o: \
+ /home/awkrail/research/mobileone.c/src/conv2d.c \
+ /usr/include/stdc-predef.h /usr/include/stdio.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
  /usr/include/features.h /usr/include/features-time64.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
@@ -26,8 +26,6 @@ CMakeFiles/mobileone.dir/src/main.c.o: \
  /usr/include/x86_64-linux-gnu/bits/floatn-common.h \
  /usr/include/x86_64-linux-gnu/bits/stdio2-decl.h \
  /usr/include/x86_64-linux-gnu/bits/stdio2.h \
- /usr/lib/gcc/x86_64-linux-gnu/13/include/stdbool.h \
- /home/awkrail/research/mobileone.c/include/mat.h \
- /home/awkrail/research/mobileone.c/include/image.h \
+ /home/awkrail/research/mobileone.c/include/load.h \
  /home/awkrail/research/mobileone.c/include/conv2d.h \
  /home/awkrail/research/mobileone.c/include/mat.h

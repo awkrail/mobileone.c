@@ -9,7 +9,7 @@ struct Image
     float * data;
 };
 
-struct Mat load_image(const char * filename);
+int load_image(const char * filename, struct Mat * image);
 void free_image(struct Mat * image);
 
 #endif

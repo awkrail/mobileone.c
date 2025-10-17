@@ -2,16 +2,21 @@
 #include "mat.h"
 #include "image.h"
 
+#include <stdio.h>
 #include <stdlib.h>
 
-struct Mat load_image(const char * filename)
+int load_image(const char * filename, struct Mat * image)
 {
-    int height = 224;
-    int width = 224;
-    int channel = 3;
-    float * image_data = load(filename);
-    struct Mat input = { height, width, channel, image_data };
-    return input;
+    image->height = 224;
+    image->width = 224;
+    image->channel = 3;
+    image->data = load(filename);
+    if (!image->data)
+    {
+        fprintf(stderr, "Failed to load image: %s\n", filename);
+        return 1;
+    }
+    return 0;
 }
 
 void free_image(struct Mat * image)

@@ -3,38 +3,30 @@
 
 #include "mat.h"
 #include "image.h"
+#include "conv2d.h"
 
-void forward(struct Mat * input, const char * weight_files [], const char * bias_files [], int weight_count)
+int forward(struct Mat * input, const char ** weight_files, const char ** bias_files,
+            int * in_channels, int * out_channels, int * kernels, int * strides, int * paddings, int num_layers)
 {
-    for (int i = 0; i < weight_count; i++)
+    struct Mat out;
+    int res;
+    for (int i = 0; i < num_layers; i++)
     {
-        //struct Mat out = forward_conv2d(weight_files[i], bias_files[i], input);
+        res = forward_conv2d(weight_files[i], bias_files[i], in_channels[i], out_channels[i],
+                             kernels[i], strides[i], paddings[i], input, &out);
     }
+    return res;
 }
 
-static bool is_config_weight_num_equal(int lens [], int lens_count)
-{
-    bool all_eq = true;
-    for (int i = 1; i < lens_count; i++)
-    {
-        if (lens[i] != lens[0])
-        {
-            all_eq = false;
-            break;
-        }
-    }
-    return true;
-}
-
-void forward_stage0(struct Mat * image)
+int forward_stage0(struct Mat * image)
 {
     /* Stage0 weights & configs */
     const char * weight_files [] = {
-        "stage0.reparam_conv.weight",
+        "weights/stage0.reparam_conv.weight.bin",
     };
 
     const char * bias_files [] = {
-        "stage0.reparam_conv.bias",
+        "weights/stage0.reparam_conv.bias.bin",
     };
 
     int in_channels [] = {
@@ -57,24 +49,8 @@ void forward_stage0(struct Mat * image)
         1,
     };
 
-    int lens [] = {
-        sizeof(weight_files) / sizeof(weight_files[0]),
-        sizeof(bias_files) / sizeof(bias_files[0]),
-        sizeof(in_channels) / sizeof(in_channels[0]),
-        sizeof(out_channels) / sizeof(out_channels[0]),
-        sizeof(kernels) / sizeof(kernels[0]),
-        sizeof(strides) / sizeof(strides[0]),
-        sizeof(paddings) / sizeof(paddings[0]),
-    };
-
-    int lens_count = sizeof(lens) / sizeof(lens[0]);
-    if (!is_config_weight_num_equal(lens, lens_count))
-    {
-        fprintf(stderr, "The number of weights and bias is different. Abort.\n");
-        return;
-    }
-
-    return forward(image, weight_files, bias_files, lens[0]);
+    int num_layer = sizeof(weight_files) / sizeof(weight_files[0]);
+    return forward(image, weight_files, bias_files, in_channels, out_channels, kernels, strides, paddings, num_layer);
 }
 
 int main(int argc, char * argv [])
@@ -86,9 +62,20 @@ int main(int argc, char * argv [])
     }
 
     /* load image */
-    struct Mat image = load_image(argv[1]);
-    forward_stage0(&image);
-    free_image(&image);
+    struct Mat image;
+    if (load_image(argv[1], &image) != 0)
+    {
+        fprintf(stderr, "Error in load_image. Abort.\n");
+        return 1;
+    }
 
+    /* forward stage 0 */
+    if (forward_stage0(&image) != 0)
+    {
+        fprintf(stderr, "Error in forward_stage0. Abort.\n");
+        return 1;
+    }
+
+    free_image(&image);
     return 0;
 }
