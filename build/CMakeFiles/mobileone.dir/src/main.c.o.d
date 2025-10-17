@@ -26,5 +26,6 @@ CMakeFiles/mobileone.dir/src/main.c.o: \
  /usr/include/x86_64-linux-gnu/bits/floatn-common.h \
  /usr/include/x86_64-linux-gnu/bits/stdio2-decl.h \
  /usr/include/x86_64-linux-gnu/bits/stdio2.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/stdbool.h \
  /home/awkrail/research/mobileone.c/include/mat.h \
  /home/awkrail/research/mobileone.c/include/image.h
