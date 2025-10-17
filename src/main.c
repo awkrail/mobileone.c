@@ -1,5 +1,7 @@
 #include <stdio.h>
-#include <stdlib.h>
+
+#include "mat.h"
+#include "image.h"
 
 struct Conv2D
 {
@@ -12,58 +14,47 @@ struct Conv2D
     float * bias;
 };
 
-float * load(const char * filename, size_t * count_out)
+void forward(struct Mat * image, const char * weight_files [], const char * bias_files [], int weight_count)
 {
-    FILE *fp = fopen(filename, "rb");
-    if (!fp)
+    /**
+    for (int i = 0; i < weight_count; i++)
     {
-        fprintf(stderr, "Failed to open file: %s\n", filename);
-        return NULL;
     }
+    **/
 
-    if (fseek(fp, 0, SEEK_END) != 0)
-    {
-        fprintf(stderr, "Fseek error, file-size maybe 0?\n");
-        fclose(fp);
-        return NULL;
-    }
-
-    long size = ftell(fp);
-    if (size < 0)
-    {
-        fprintf(stderr, "Ftell error\n");
-        fclose(fp);
-        return NULL;
-    }
-
-    int count = size / sizeof(float);
-    float * data = (float *)malloc(count * sizeof(float));
-    if (!data)
-    {
-        fprintf(stderr, "Failed to allocate memory.\n");
-        fclose(fp);
-        return NULL;
-    }
-
-    size_t read_count = fread(data, sizeof(float), count, fp);
-    fclose(fp);
-
-    if (read_count != count)
-    {
-        fprintf(stderr, "Error: file size mismatch or read error.\n");
-        return NULL;
-    }
-    
-    if (count_out)
-        *count_out = count;
-
-    return data;
+    printf("hi\n");
 }
 
-
+void forward_stage0(struct Mat * image)
+{
+    const char * weight_files [] = {
+        "stage0.reparam_conv.weight",
+    };
+    const char * bias_files [] = {
+        "stage0.reparam_conv.bias",
+    };
+    const int weight_count = sizeof(weight_files) / sizeof(weight_files[0]);
+    const int bias_count = sizeof(bias_files) / sizeof(bias_files[0]);
+    if (weight_count != bias_count)
+    {
+        fprintf(stderr, "The number of weights and bias is different. Abort.\n");
+        return;
+    }
+    return forward(image, weight_files, bias_files, weight_count);
+}
 
 int main(int argc, char * argv [])
 {
-    printf("hello, world\n");
+    if (argc != 2)
+    {
+        fprintf(stderr, "Usage: ./mobileone [input_image_file].\n");
+        return 1;
+    }
+
+    /* load image */
+    struct Mat image = load_image(argv[1]);
+    forward_stage0(&image);
+    free_image(&image);
+
     return 0;
 }

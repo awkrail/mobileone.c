@@ -129,6 +129,54 @@ mobileone/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mobileone.dir/build.make CMakeFiles/mobileone.dir/build
 .PHONY : mobileone/fast
 
+src/image.o: src/image.c.o
+.PHONY : src/image.o
+
+# target to build an object file
+src/image.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mobileone.dir/build.make CMakeFiles/mobileone.dir/src/image.c.o
+.PHONY : src/image.c.o
+
+src/image.i: src/image.c.i
+.PHONY : src/image.i
+
+# target to preprocess a source file
+src/image.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mobileone.dir/build.make CMakeFiles/mobileone.dir/src/image.c.i
+.PHONY : src/image.c.i
+
+src/image.s: src/image.c.s
+.PHONY : src/image.s
+
+# target to generate assembly for a file
+src/image.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mobileone.dir/build.make CMakeFiles/mobileone.dir/src/image.c.s
+.PHONY : src/image.c.s
+
+src/load.o: src/load.c.o
+.PHONY : src/load.o
+
+# target to build an object file
+src/load.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mobileone.dir/build.make CMakeFiles/mobileone.dir/src/load.c.o
+.PHONY : src/load.c.o
+
+src/load.i: src/load.c.i
+.PHONY : src/load.i
+
+# target to preprocess a source file
+src/load.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mobileone.dir/build.make CMakeFiles/mobileone.dir/src/load.c.i
+.PHONY : src/load.c.i
+
+src/load.s: src/load.c.s
+.PHONY : src/load.s
+
+# target to generate assembly for a file
+src/load.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mobileone.dir/build.make CMakeFiles/mobileone.dir/src/load.c.s
+.PHONY : src/load.c.s
+
 src/main.o: src/main.c.o
 .PHONY : src/main.o
 
@@ -162,6 +210,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... mobileone"
+	@echo "... src/image.o"
+	@echo "... src/image.i"
+	@echo "... src/image.s"
+	@echo "... src/load.o"
+	@echo "... src/load.i"
+	@echo "... src/load.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

@@ -1,4 +1,8 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/mobileone.dir/src/image.c.o"
+  "CMakeFiles/mobileone.dir/src/image.c.o.d"
+  "CMakeFiles/mobileone.dir/src/load.c.o"
+  "CMakeFiles/mobileone.dir/src/load.c.o.d"
   "CMakeFiles/mobileone.dir/src/main.c.o"
   "CMakeFiles/mobileone.dir/src/main.c.o.d"
   "mobileone"

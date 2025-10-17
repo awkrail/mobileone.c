@@ -69,10 +69,38 @@ include CMakeFiles/mobileone.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/mobileone.dir/flags.make
 
+CMakeFiles/mobileone.dir/src/image.c.o: CMakeFiles/mobileone.dir/flags.make
+CMakeFiles/mobileone.dir/src/image.c.o: /home/awkrail/research/mobileone.c/src/image.c
+CMakeFiles/mobileone.dir/src/image.c.o: CMakeFiles/mobileone.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/awkrail/research/mobileone.c/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/mobileone.dir/src/image.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/mobileone.dir/src/image.c.o -MF CMakeFiles/mobileone.dir/src/image.c.o.d -o CMakeFiles/mobileone.dir/src/image.c.o -c /home/awkrail/research/mobileone.c/src/image.c
+
+CMakeFiles/mobileone.dir/src/image.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/mobileone.dir/src/image.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/awkrail/research/mobileone.c/src/image.c > CMakeFiles/mobileone.dir/src/image.c.i
+
+CMakeFiles/mobileone.dir/src/image.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/mobileone.dir/src/image.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/awkrail/research/mobileone.c/src/image.c -o CMakeFiles/mobileone.dir/src/image.c.s
+
+CMakeFiles/mobileone.dir/src/load.c.o: CMakeFiles/mobileone.dir/flags.make
+CMakeFiles/mobileone.dir/src/load.c.o: /home/awkrail/research/mobileone.c/src/load.c
+CMakeFiles/mobileone.dir/src/load.c.o: CMakeFiles/mobileone.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/awkrail/research/mobileone.c/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/mobileone.dir/src/load.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/mobileone.dir/src/load.c.o -MF CMakeFiles/mobileone.dir/src/load.c.o.d -o CMakeFiles/mobileone.dir/src/load.c.o -c /home/awkrail/research/mobileone.c/src/load.c
+
+CMakeFiles/mobileone.dir/src/load.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/mobileone.dir/src/load.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/awkrail/research/mobileone.c/src/load.c > CMakeFiles/mobileone.dir/src/load.c.i
+
+CMakeFiles/mobileone.dir/src/load.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/mobileone.dir/src/load.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/awkrail/research/mobileone.c/src/load.c -o CMakeFiles/mobileone.dir/src/load.c.s
+
 CMakeFiles/mobileone.dir/src/main.c.o: CMakeFiles/mobileone.dir/flags.make
 CMakeFiles/mobileone.dir/src/main.c.o: /home/awkrail/research/mobileone.c/src/main.c
 CMakeFiles/mobileone.dir/src/main.c.o: CMakeFiles/mobileone.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/awkrail/research/mobileone.c/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/mobileone.dir/src/main.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/awkrail/research/mobileone.c/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/mobileone.dir/src/main.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/mobileone.dir/src/main.c.o -MF CMakeFiles/mobileone.dir/src/main.c.o.d -o CMakeFiles/mobileone.dir/src/main.c.o -c /home/awkrail/research/mobileone.c/src/main.c
 
 CMakeFiles/mobileone.dir/src/main.c.i: cmake_force
@@ -85,15 +113,19 @@ CMakeFiles/mobileone.dir/src/main.c.s: cmake_force
 
 # Object files for target mobileone
 mobileone_OBJECTS = \
+"CMakeFiles/mobileone.dir/src/image.c.o" \
+"CMakeFiles/mobileone.dir/src/load.c.o" \
 "CMakeFiles/mobileone.dir/src/main.c.o"
 
 # External object files for target mobileone
 mobileone_EXTERNAL_OBJECTS =
 
+mobileone: CMakeFiles/mobileone.dir/src/image.c.o
+mobileone: CMakeFiles/mobileone.dir/src/load.c.o
 mobileone: CMakeFiles/mobileone.dir/src/main.c.o
 mobileone: CMakeFiles/mobileone.dir/build.make
 mobileone: CMakeFiles/mobileone.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/awkrail/research/mobileone.c/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable mobileone"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/awkrail/research/mobileone.c/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C executable mobileone"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/mobileone.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
