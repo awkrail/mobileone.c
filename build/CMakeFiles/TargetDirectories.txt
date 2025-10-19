@@ -1,3 +1,0 @@
-/home/awkrail/research/mobileone.c/build/CMakeFiles/mobileone.dir
-/home/awkrail/research/mobileone.c/build/CMakeFiles/edit_cache.dir
-/home/awkrail/research/mobileone.c/build/CMakeFiles/rebuild_cache.dir

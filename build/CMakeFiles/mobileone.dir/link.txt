@@ -1,1 +1,0 @@
-/usr/bin/cc -nodefaultlibs -flto CMakeFiles/mobileone.dir/src/conv2d.c.o CMakeFiles/mobileone.dir/src/image.c.o CMakeFiles/mobileone.dir/src/load.c.o CMakeFiles/mobileone.dir/src/main.c.o -o mobileone  -lc 
