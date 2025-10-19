@@ -5,6 +5,23 @@
 #include "image.h"
 #include "conv2d.h"
 
+void dump(struct Mat * mat)
+{
+    int num_elem = mat->height * mat->width * mat->channel;
+    FILE * fp = fopen("vector.txt", "w");
+    if (!fp)
+    {
+        fprintf(stderr, "failed to open.\n");
+        return;
+    }
+    for (int i = 0; i < num_elem; i++)
+    {
+        fprintf(fp, "%f\n", mat->data[i]);
+    }
+    fclose(fp);
+}
+
+
 int forward(struct Mat * input, const char ** weight_files, const char ** bias_files,
             int * in_channels, int * out_channels, int * kernels, int * strides, int * paddings, int num_layers)
 {
@@ -14,6 +31,8 @@ int forward(struct Mat * input, const char ** weight_files, const char ** bias_f
     {
         res = forward_conv2d(weight_files[i], bias_files[i], in_channels[i], out_channels[i],
                              kernels[i], strides[i], paddings[i], input, &out);
+
+
     }
     return res;
 }
@@ -34,7 +53,7 @@ int forward_stage0(struct Mat * image)
     };
 
     int out_channels [] = {
-        3,
+        48,
     };
 
     int kernels [] = {

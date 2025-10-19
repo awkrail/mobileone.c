@@ -1,0 +1,200 @@
+desc: (none)
+cmd: ./build/mobileone apple.bin
+time_unit: i
+#-----------
+snapshot=0
+#-----------
+time=0
+mem_heap_B=0
+mem_heap_extra_B=0
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=1
+#-----------
+time=156143
+mem_heap_B=472
+mem_heap_extra_B=16
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=2
+#-----------
+time=156766
+mem_heap_B=4568
+mem_heap_extra_B=24
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=3
+#-----------
+time=157363
+mem_heap_B=606680
+mem_heap_extra_B=32
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=4
+#-----------
+time=157800
+mem_heap_B=606680
+mem_heap_extra_B=32
+mem_stacks_B=0
+heap_tree=detailed
+n2: 606680 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 602112 0x109753: load (in /home/awkrail/research/mobileone.c/build/mobileone)
+  n1: 602112 0x109655: load_image (in /home/awkrail/research/mobileone.c/build/mobileone)
+   n0: 602112 0x1091C2: main (in /home/awkrail/research/mobileone.c/build/mobileone)
+ n0: 4568 in 2 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=5
+#-----------
+time=157800
+mem_heap_B=602584
+mem_heap_extra_B=24
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=6
+#-----------
+time=157938
+mem_heap_B=602112
+mem_heap_extra_B=8
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=7
+#-----------
+time=158107
+mem_heap_B=602584
+mem_heap_extra_B=24
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=8
+#-----------
+time=158730
+mem_heap_B=606680
+mem_heap_extra_B=32
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=9
+#-----------
+time=159351
+mem_heap_B=611864
+mem_heap_extra_B=40
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=10
+#-----------
+time=160089
+mem_heap_B=607768
+mem_heap_extra_B=32
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=11
+#-----------
+time=160227
+mem_heap_B=607296
+mem_heap_extra_B=16
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=12
+#-----------
+time=160298
+mem_heap_B=607768
+mem_heap_extra_B=32
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=13
+#-----------
+time=160921
+mem_heap_B=611864
+mem_heap_extra_B=40
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=14
+#-----------
+time=161527
+mem_heap_B=612056
+mem_heap_extra_B=48
+mem_stacks_B=0
+heap_tree=detailed
+n2: 612056 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 607488 0x109753: load (in /home/awkrail/research/mobileone.c/build/mobileone)
+  n1: 602112 0x109655: load_image (in /home/awkrail/research/mobileone.c/build/mobileone)
+   n0: 602112 0x1091C2: main (in /home/awkrail/research/mobileone.c/build/mobileone)
+  n0: 5376 in 2 places, all below massif's threshold (1.00%)
+ n0: 4568 in 2 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=15
+#-----------
+time=161944
+mem_heap_B=607960
+mem_heap_extra_B=40
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=16
+#-----------
+time=162082
+mem_heap_B=607488
+mem_heap_extra_B=24
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=17
+#-----------
+time=162164
+mem_heap_B=758016
+mem_heap_extra_B=32
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=18
+#-----------
+time=32448364
+mem_heap_B=758016
+mem_heap_extra_B=32
+mem_stacks_B=0
+heap_tree=peak
+n3: 758016 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 607488 0x109753: load (in /home/awkrail/research/mobileone.c/build/mobileone)
+  n1: 602112 0x109655: load_image (in /home/awkrail/research/mobileone.c/build/mobileone)
+   n0: 602112 0x1091C2: main (in /home/awkrail/research/mobileone.c/build/mobileone)
+  n0: 5376 in 2 places, all below massif's threshold (1.00%)
+ n1: 150528 0x109475: forward_conv2d (in /home/awkrail/research/mobileone.c/build/mobileone)
+  n1: 150528 0x109846: forward (in /home/awkrail/research/mobileone.c/build/mobileone)
+   n1: 150528 0x1098FD: forward_stage0 (in /home/awkrail/research/mobileone.c/build/mobileone)
+    n0: 150528 0x1091EF: main (in /home/awkrail/research/mobileone.c/build/mobileone)
+ n0: 0 in 2 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=19
+#-----------
+time=32448364
+mem_heap_B=752832
+mem_heap_extra_B=24
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=20
+#-----------
+time=32448398
+mem_heap_B=752640
+mem_heap_extra_B=16
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=21
+#-----------
+time=32448476
+mem_heap_B=150528
+mem_heap_extra_B=8
+mem_stacks_B=0
+heap_tree=empty
