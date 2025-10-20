@@ -21,6 +21,9 @@ int load_image(const char * filename, struct Mat * image)
 
 void free_image(struct Mat * image)
 {
-    free(image->data);
-    image->data = NULL;
+    if (image->data)
+    {
+        free(image->data);
+        image->data = NULL;
+    }
 }

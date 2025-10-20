@@ -5,6 +5,7 @@
 #include "mat.h"
 #include "image.h"
 #include "conv2d.h"
+#include "adaptive_pool2d.h"
 
 void dump(struct Mat * mat)
 {
@@ -44,12 +45,28 @@ int forward_conv2d_relu_layers(struct Mat * input, const char ** weight_files, c
                              kernels[i], strides[i], paddings[i], groups[i], input, &out);
         if (res != 0)
         {
-            // TODO: release intermediate vectors
+            // TODO: release intermediate vectors (memory leak)
+            free_image(input);
+            free_image(&out);
             return res;
         }
         replace_mat(input, &out);
     }
     return res;
+}
+
+int forward_adaptive_avg_pool2d(struct Mat * input)
+{
+    struct Mat out = { 0 };
+    if (adaptive_avg_pool2d(input, &out) != 0)
+    {
+        fprintf(stderr, "Failed to adaptive_avg_pool2d().\n");
+        free_image(input);
+        return 1;
+    }
+
+    replace_mat(input, &out);
+    return 0;
 }
 
 int forward(const char * filename)
@@ -465,13 +482,20 @@ int forward(const char * filename)
     if (forward_conv2d_relu_layers(&input, weight_files, bias_files, in_channels, out_channels,
                 kernels, strides, paddings, groups, num_layer) != 0)
     {
-        fprintf(stderr, "Failed to run forward_layer().\n");
+        fprintf(stderr, "Failed to run forward_conv2d_relu_layers().\n");
         free_image(&input);
         return 1;
     };
 
-    //struct Mat pooled_output = { 0 };
-    //if (adaptive_avg_pool2d(input, &output)
+    if (forward_adaptive_avg_pool2d(&input) != 0)
+    {
+        fprintf(stderr, "Failed to run adaptive_avg_pool2d().\n");
+        free_image(&input);
+        return 1;
+    }
+
+    dump(&input);
+
     free_image(&input);
     return 0;
 }
