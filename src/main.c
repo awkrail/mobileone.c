@@ -6,21 +6,10 @@
 #include "image.h"
 #include "conv2d.h"
 #include "adaptive_pool2d.h"
+#include "linear.h"
 
-void dump(struct Mat * mat)
+void print_topk_indices(struct Mat * pred, int topk)
 {
-    int num_elem = mat->height * mat->width * mat->channel;
-    FILE * fp = fopen("vector.txt", "w");
-    if (!fp)
-    {
-        fprintf(stderr, "failed to open.\n");
-        return;
-    }
-    for (int i = 0; i < num_elem; i++)
-    {
-        fprintf(fp, "%f\n", mat->data[i]);
-    }
-    fclose(fp);
 }
 
 void replace_mat(struct Mat * dst, struct Mat * src)
@@ -65,6 +54,19 @@ int forward_adaptive_avg_pool2d(struct Mat * input)
         return 1;
     }
 
+    replace_mat(input, &out);
+    return 0;
+}
+
+int forward_linear(const char * weight_file, const char * bias_file, int in_features, int out_features, struct Mat * input)
+{
+    struct Mat out = { 0 };
+    if (linear(weight_file, bias_file, in_features, out_features, input, &out) != 0)
+    {
+        fprintf(stderr, "Failed to linear().\n");
+        free_image(input);
+        return 1;
+    }
     replace_mat(input, &out);
     return 0;
 }
@@ -494,8 +496,18 @@ int forward(const char * filename)
         return 1;
     }
 
-    dump(&input);
+    int in_features = 1024;
+    int out_features = 1000;
+    const char * linear_weight_file = "weights/linear.weight.bin";
+    const char * linear_bias_file = "weights/linear.bias.bin";
+    if (forward_linear(linear_weight_file, linear_bias_file, in_features, out_features, &input) != 0)
+    {
+        fprintf(stderr, "Failed to run linear().\n");
+        free_image(&input);
+        return 1;
+    }
 
+    print_topk_indices(&input);
     free_image(&input);
     return 0;
 }
