@@ -31,6 +31,12 @@ def main():
 
     # stage 2
     output_stage2 = model.stage2(output_stage1)
+
+    # stage 3
+    output_stage3 = model.stage3(output_stage2)
+
+    # stage 4
+    output_stage4 = model.stage4(output_stage3)
     import ipdb; ipdb.set_trace()
 
 

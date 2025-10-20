@@ -32,14 +32,14 @@ void replace_mat(struct Mat * dst, struct Mat * src)
     src->data = NULL;
 }
 
-int forward_layer(struct Mat * input, const char ** weight_files, const char ** bias_files,
-                  int * in_channels, int * out_channels, int * kernels, int * strides, int * paddings,
-                  int * groups, int num_layers)
+int forward_conv2d_relu_layers(struct Mat * input, const char ** weight_files, const char ** bias_files,
+                               int * in_channels, int * out_channels, int * kernels, int * strides, int * paddings,
+                               int * groups, int num_layers)
 {
-    struct Mat out;
     int res;
     for (int i = 0; i < num_layers; i++)
     {
+        struct Mat out = { 0 };
         res = forward_conv2d(weight_files[i], bias_files[i], in_channels[i], out_channels[i],
                              kernels[i], strides[i], paddings[i], groups[i], input, &out);
         if (res != 0)
@@ -49,12 +49,18 @@ int forward_layer(struct Mat * input, const char ** weight_files, const char ** 
         }
         replace_mat(input, &out);
     }
-    dump(input);
     return res;
 }
 
-int forward(struct Mat * image)
+int forward(const char * filename)
 {
+    struct Mat input;
+    if (load_image(filename, &input) != 0)
+    {
+        fprintf(stderr, "Error in load_image.\n");
+        return 1;
+    }
+
     const char * weight_files [] = {
         // stage 0 & 1
         "weights/stage0.reparam_conv.weight.bin",
@@ -79,7 +85,30 @@ int forward(struct Mat * image)
         "weights/stage2.13.reparam_conv.weight.bin",
         "weights/stage2.14.reparam_conv.weight.bin",
         "weights/stage2.15.reparam_conv.weight.bin",
-
+        // stage 3
+        "weights/stage3.0.reparam_conv.weight.bin",
+        "weights/stage3.1.reparam_conv.weight.bin",
+        "weights/stage3.2.reparam_conv.weight.bin",
+        "weights/stage3.3.reparam_conv.weight.bin",
+        "weights/stage3.4.reparam_conv.weight.bin",
+        "weights/stage3.5.reparam_conv.weight.bin",
+        "weights/stage3.6.reparam_conv.weight.bin",
+        "weights/stage3.7.reparam_conv.weight.bin",
+        "weights/stage3.8.reparam_conv.weight.bin",
+        "weights/stage3.9.reparam_conv.weight.bin",
+        "weights/stage3.10.reparam_conv.weight.bin",
+        "weights/stage3.11.reparam_conv.weight.bin",
+        "weights/stage3.12.reparam_conv.weight.bin",
+        "weights/stage3.13.reparam_conv.weight.bin",
+        "weights/stage3.14.reparam_conv.weight.bin",
+        "weights/stage3.15.reparam_conv.weight.bin",
+        "weights/stage3.16.reparam_conv.weight.bin",
+        "weights/stage3.17.reparam_conv.weight.bin",
+        "weights/stage3.18.reparam_conv.weight.bin",
+        "weights/stage3.19.reparam_conv.weight.bin",
+        // stage 4
+        "weights/stage4.0.reparam_conv.weight.bin",
+        "weights/stage4.1.reparam_conv.weight.bin",
     };
 
     const char * bias_files [] = {
@@ -106,8 +135,30 @@ int forward(struct Mat * image)
         "weights/stage2.13.reparam_conv.bias.bin",
         "weights/stage2.14.reparam_conv.bias.bin",
         "weights/stage2.15.reparam_conv.bias.bin",
-
         // stage 3
+        "weights/stage3.0.reparam_conv.bias.bin",
+        "weights/stage3.1.reparam_conv.bias.bin",
+        "weights/stage3.2.reparam_conv.bias.bin",
+        "weights/stage3.3.reparam_conv.bias.bin",
+        "weights/stage3.4.reparam_conv.bias.bin",
+        "weights/stage3.5.reparam_conv.bias.bin",
+        "weights/stage3.6.reparam_conv.bias.bin",
+        "weights/stage3.7.reparam_conv.bias.bin",
+        "weights/stage3.8.reparam_conv.bias.bin",
+        "weights/stage3.9.reparam_conv.bias.bin",
+        "weights/stage3.10.reparam_conv.bias.bin",
+        "weights/stage3.11.reparam_conv.bias.bin",
+        "weights/stage3.12.reparam_conv.bias.bin",
+        "weights/stage3.13.reparam_conv.bias.bin",
+        "weights/stage3.14.reparam_conv.bias.bin",
+        "weights/stage3.15.reparam_conv.bias.bin",
+        "weights/stage3.16.reparam_conv.bias.bin",
+        "weights/stage3.17.reparam_conv.bias.bin",
+        "weights/stage3.18.reparam_conv.bias.bin",
+        "weights/stage3.19.reparam_conv.bias.bin",
+        // stage 4
+        "weights/stage4.0.reparam_conv.bias.bin",
+        "weights/stage4.1.reparam_conv.bias.bin",
     };
 
     int in_channels [] = {
@@ -134,6 +185,30 @@ int forward(struct Mat * image)
         128,
         128,
         128,
+        // stage 3
+        128,
+        128,
+        256,
+        256,
+        256,
+        256,
+        256,
+        256,
+        256,
+        256,
+        256,
+        256,
+        256,
+        256,
+        256,
+        256,
+        256,
+        256,
+        256,
+        256,
+        // stage 4
+        256,
+        256,
     };
 
     int out_channels [] = {
@@ -160,6 +235,30 @@ int forward(struct Mat * image)
         128,
         128,
         128,
+        // stage 3
+        128,
+        256,
+        256,
+        256,
+        256,
+        256,
+        256,
+        256,
+        256,
+        256,
+        256,
+        256,
+        256,
+        256,
+        256,
+        256,
+        256,
+        256,
+        256,
+        256,
+        // stage 4
+        256,
+        1024,
     };
 
     int kernels [] = {
@@ -184,6 +283,30 @@ int forward(struct Mat * image)
         1,
         3,
         1,
+        3,
+        1,
+        // stage 3
+        3,
+        1,
+        3,
+        1,
+        3,
+        1,
+        3,
+        1,
+        3,
+        1,
+        3,
+        1,
+        3,
+        1,
+        3,
+        1,
+        3,
+        1,
+        3,
+        1,
+        // stage 4
         3,
         1,
     };
@@ -212,6 +335,30 @@ int forward(struct Mat * image)
         1,
         1,
         1,
+        // stage 3
+        2,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        // stage 4
+        2,
+        1,
     };
 
     int paddings [] = {
@@ -236,6 +383,30 @@ int forward(struct Mat * image)
         0,
         1,
         0,
+        1,
+        0,
+        // stage 3
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        // stage 4
         1,
         0,
     };
@@ -264,10 +435,45 @@ int forward(struct Mat * image)
         1,
         128,
         1,
+        // stage 3
+        128,
+        1,
+        256,
+        1,
+        256,
+        1,
+        256,
+        1,
+        256,
+        1,
+        256,
+        1,
+        256,
+        1,
+        256,
+        1,
+        256,
+        1,
+        256,
+        1,
+        // stage 4
+        256,
+        1,
     };
 
     int num_layer = sizeof(weight_files) / sizeof(weight_files[0]);
-    return forward_layer(image, weight_files, bias_files, in_channels, out_channels, kernels, strides, paddings, groups, num_layer);
+    if (forward_conv2d_relu_layers(&input, weight_files, bias_files, in_channels, out_channels,
+                kernels, strides, paddings, groups, num_layer) != 0)
+    {
+        fprintf(stderr, "Failed to run forward_layer().\n");
+        free_image(&input);
+        return 1;
+    };
+
+    //struct Mat pooled_output = { 0 };
+    //if (adaptive_avg_pool2d(input, &output)
+    free_image(&input);
+    return 0;
 }
 
 int main(int argc, char * argv [])
@@ -278,19 +484,11 @@ int main(int argc, char * argv [])
         return 1;
     }
 
-    struct Mat image;
-    if (load_image(argv[1], &image) != 0)
+    if (forward(argv[1]) != 0)
     {
-        fprintf(stderr, "Error in load_image. Abort.\n");
+        fprintf(stderr, "Error in forward function. Abort.\n");
         return 1;
     }
 
-    if (forward(&image) != 0)
-    {
-        fprintf(stderr, "Error in forward_stage0. Abort.\n");
-        return 1;
-    }
-
-    free_image(&image);
     return 0;
 }
