@@ -23,7 +23,12 @@ def main():
 
     img = Image.open('./apple.png').convert("RGB")
     input_tensor = transform(img).unsqueeze(0)
-    output_tensor = model.stage0(input_tensor)
+    # stage 0
+    output_stage0 = model.stage0(input_tensor)
+
+    # stage 1
+    output_stage_1_0 = model.stage1[0](output_stage0)
+    import ipdb; ipdb.set_trace()
 
 
 if __name__ == "__main__":
