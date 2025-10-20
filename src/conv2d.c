@@ -99,7 +99,6 @@ int forward_conv2d(const char *weight_file, const char *bias_file,
                                     ic_global * input->height * input->width +
                                     in_y * input->width + in_x;
 
-                                // weight layout: [out_c, in_c/groups, k, k]
                                 int weight_index =
                                     (oc_global * in_per_group * kernel * kernel) +
                                     (ic * kernel * kernel) +

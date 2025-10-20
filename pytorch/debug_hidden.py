@@ -27,7 +27,10 @@ def main():
     output_stage0 = model.stage0(input_tensor)
 
     # stage 1
-    output_stage_1_0 = model.stage1[0](output_stage0)
+    output_stage1 = model.stage1(output_stage0)
+
+    # stage 2
+    output_stage2 = model.stage2(output_stage1)
     import ipdb; ipdb.set_trace()
 
 

@@ -59,48 +59,211 @@ int forward(struct Mat * image)
         // stage 0 & 1
         "weights/stage0.reparam_conv.weight.bin",
         "weights/stage1.0.reparam_conv.weight.bin",
-        //"weights/stage1.1.reparam_conv.weight.bin",
-        //"weights/stage1.2.reparam_conv.weight.bin",
-        //"weights/stage1.3.reparam_conv.weight.bin",
+        "weights/stage1.1.reparam_conv.weight.bin",
+        "weights/stage1.2.reparam_conv.weight.bin",
+        "weights/stage1.3.reparam_conv.weight.bin",
+        // stage 2
+        "weights/stage2.0.reparam_conv.weight.bin",
+        "weights/stage2.1.reparam_conv.weight.bin",
+        "weights/stage2.2.reparam_conv.weight.bin",
+        "weights/stage2.3.reparam_conv.weight.bin",
+        "weights/stage2.4.reparam_conv.weight.bin",
+        "weights/stage2.5.reparam_conv.weight.bin",
+        "weights/stage2.6.reparam_conv.weight.bin",
+        "weights/stage2.7.reparam_conv.weight.bin",
+        "weights/stage2.8.reparam_conv.weight.bin",
+        "weights/stage2.9.reparam_conv.weight.bin",
+        "weights/stage2.10.reparam_conv.weight.bin",
+        "weights/stage2.11.reparam_conv.weight.bin",
+        "weights/stage2.12.reparam_conv.weight.bin",
+        "weights/stage2.13.reparam_conv.weight.bin",
+        "weights/stage2.14.reparam_conv.weight.bin",
+        "weights/stage2.15.reparam_conv.weight.bin",
+
     };
 
     const char * bias_files [] = {
         // stage 0 & 1
         "weights/stage0.reparam_conv.bias.bin",
         "weights/stage1.0.reparam_conv.bias.bin",
-        //"weights/stage1.1.reparam_conv.bias.bin",
-        //"weights/stage1.2.reparam_conv.bias.bin",
-        //"weights/stage1.3.reparam_conv.bias.bin",
+        "weights/stage1.1.reparam_conv.bias.bin",
+        "weights/stage1.2.reparam_conv.bias.bin",
+        "weights/stage1.3.reparam_conv.bias.bin",
+        // stage 2
+        "weights/stage2.0.reparam_conv.bias.bin",
+        "weights/stage2.1.reparam_conv.bias.bin",
+        "weights/stage2.2.reparam_conv.bias.bin",
+        "weights/stage2.3.reparam_conv.bias.bin",
+        "weights/stage2.4.reparam_conv.bias.bin",
+        "weights/stage2.5.reparam_conv.bias.bin",
+        "weights/stage2.6.reparam_conv.bias.bin",
+        "weights/stage2.7.reparam_conv.bias.bin",
+        "weights/stage2.8.reparam_conv.bias.bin",
+        "weights/stage2.9.reparam_conv.bias.bin",
+        "weights/stage2.10.reparam_conv.bias.bin",
+        "weights/stage2.11.reparam_conv.bias.bin",
+        "weights/stage2.12.reparam_conv.bias.bin",
+        "weights/stage2.13.reparam_conv.bias.bin",
+        "weights/stage2.14.reparam_conv.bias.bin",
+        "weights/stage2.15.reparam_conv.bias.bin",
+
+        // stage 3
     };
 
     int in_channels [] = {
+        // stage 0 & 1
         3,
         48,
+        48,
+        48,
+        48,
+        // stage 2
+        48,
+        48,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
     };
 
     int out_channels [] = {
+        // stage 0 & 1
         48,
         48,
+        48,
+        48,
+        48,
+        // stage 2
+        48,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
     };
 
     int kernels [] = {
+        // stage 0 & 1
         3,
         3,
+        1,
+        3,
+        1,
+        // stage 2
+        3,
+        1,
+        3,
+        1,
+        3,
+        1,
+        3,
+        1,
+        3,
+        1,
+        3,
+        1,
+        3,
+        1,
+        3,
+        1,
     };
 
     int strides [] = {
+        // stage 0 & 1
         2,
         2,
+        1,
+        1,
+        1,
+        // stage 2
+        2,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
     };
 
     int paddings [] = {
+        // stage 0 & 1
         1,
         1,
+        0,
+        1,
+        0,
+        // stage 2
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
     };
 
     int groups [] = {
+        // stage 0 & 1
         1,
         48,
+        1,
+        48,
+        1,
+        // stage 2
+        48,
+        1,
+        128,
+        1,
+        128,
+        1,
+        128,
+        1,
+        128,
+        1,
+        128,
+        1,
+        128,
+        1,
+        128,
+        1,
     };
 
     int num_layer = sizeof(weight_files) / sizeof(weight_files[0]);
